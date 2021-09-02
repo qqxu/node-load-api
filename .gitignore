@@ -1,0 +1,6 @@
+package-lock.json
+*.xlsx
+node_modules
+originData
+final_output
+batch_result

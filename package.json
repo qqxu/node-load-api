@@ -1,0 +1,19 @@
+{
+  "name": "node-load-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "qqxu",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "0.21.1",
+    "express": "4.17.1",
+    "fs": "0.0.1-security",
+    "iconv-lite": "0.6.3",
+    "node-xlsx": "0.16.1",
+    "shelljs": "0.8.4"
+  }
+}
