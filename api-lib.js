@@ -15,7 +15,7 @@ const commonLib = require('./common-lib.js');
 	const aList = commonLib.splitArray(arr, num);
 	for (let i = 0; i < aList.length;i++) {
 		const aRes = await delayFun(aList[i],timeout, API, COOKIE);
-		console.log('当前处理项：', aRes);
+		// console.log('当前处理项：', aRes);
 		result = result.concat(aRes);
 		const haveDone = result.length;
 		console.log(`已经完成的个数: ${result.length}, 剩余待处理的个数: ${len - haveDone}`);
@@ -49,14 +49,17 @@ const  getByOrderNo = async (orderNo, api, cookie) => {
 	const resp = await getApi({ api: `${api}${orderNo}`, cookie });
 	
 	let couponData = resp.data ? resp.data.shopCouponPromotionViewDTOs : [];
+	let errTips = '';
 	if (!couponData) {
-		console.error(`出错了哦！当前订单号是：${orderNo}, resp.data 是 ${resp.data}`);
+		console.error(`出错了哦！当前订单号是：${orderNo}, resp.data`, resp.data);
 		couponData = [];
+		errTips = '出错了哦，请手动查询'
 	}
 	const allPromotionName = couponData.map(itm => itm.promotionName).join('----');
 	return ({
 		orderNo: orderNo,
-		promotionName: allPromotionName
+		promotionName: allPromotionName,
+		errTips: errTips,
 	});
 }
 
