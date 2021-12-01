@@ -15,10 +15,9 @@ const commonLib = require('./common-lib.js');
 	const aList = commonLib.splitArray(arr, num);
 	for (let i = 0; i < aList.length;i++) {
 		const aRes = await delayFun(aList[i],timeout, API, COOKIE);
-		// console.log('当前处理项：', aRes);
 		result = result.concat(aRes);
 		const haveDone = result.length;
-		console.log(`已经完成的个数: ${result.length}, 剩余待处理的个数: ${len - haveDone}`);
+		console.log(`当前批次已经完成的个数: ${result.length}, 剩余待处理的个数: ${len - haveDone}`);
 	}
 	return result;
 }

@@ -4,7 +4,7 @@
 
 ### 需求梳理
 
-页面A链接：https://smf.taobao.com/index.htm?spm=xxxxxx&menu=xxxxxx&module=xxxxxx
+页面A链接：https://smf.xxx.com/index.htm?spm=xxxxxx&menu=xxxxxx&module=xxxxxx
 
 页面A是某猫商家的营销中心，访问页面A会跳转至登录, 输入【天猫商家】的账号+密码登录成功后，再次访问页面A，显示如下
 
@@ -57,9 +57,9 @@ const getApi = ({ api, cookie }) => {
             headers: {
                 "content-type": "application/json",
                 "Cookie": cookie,
-                "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
-                "referer": "https://smf.taobao.com/promotionmonitor/index.htm",
-                "sec-ch-ua": 'Not;A Brand";v="99", "Google Chrome";v="91", "Chromium";v="91"',
+                "User-Agent": "***",
+                "referer": "****",
+                "sec-ch-ua": '***',
                 "sec-fetch-mode": "cors",
                 "sec-fetch-site": "same-origin",
                 "timeout": 1000

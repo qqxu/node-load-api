@@ -72,9 +72,9 @@ const getOrderNoList = async () => {
  */
 const batchSaveFile = async (arr, num) => {
 	const aList = commonLib.splitArray(arr, num);
-	console.log('总批次', aList.length);
+	const maxLen = aList.length;
 	for (let i = 0; i < aList.length;i++) {
-		console.log('当前批次', i);
+		console.log(`当前批次${i + 1}, 总批次${maxLen}`);
 		const data = await apiLib.getApiResult(aList[i], 2, 5000);
 		excelLib.saveToExcel(commonLib.formatData(data), `out${i}.xlsx`, BATCH_FOLDER_NAME);
 	}
