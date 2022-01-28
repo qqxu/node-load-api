@@ -248,3 +248,26 @@ async function joinBatchResult(len) {
 }
    
 ```
+
+
+### 启动服务
+[express 官方](http://expressjs.com/en/5x/api.html#express)
+搭建本地服务器，打开浏览器页面，输入cookie，上传excel文件
+
+```
+var express = require('express');
+var app = express();
+
+// 设置静态文件目录， http://localhost:3000/ 就可以访问 public index.html
+app.use('/', express.static(__dirname + '/public'));   
+app.listen(3000);
+
+```
+
+
+### 子进程
+
+```
+const fork = require('child_process').fork;
+fork('./main.js');  // 开启子进程
+```

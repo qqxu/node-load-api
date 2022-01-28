@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #btn, #fileDom {
+      margin: 30px auto;
+    }
+  </style>
+</head>
+  <textarea id="cookieDom" placeholder="请输入 cookie" rows="10" cols="40" ></textarea>
+
+  <input id="fileDom" type="file" name="file" />
+
+  <br />
+  <button id="btn">开始</button>
+  <p id="msg"></p>
+
+  <script type="text/javascript" src="./axios.min.js"></script>
+
+  <script>
+    const cookieDom = document.getElementById('cookieDom');
+    const fileDom = document.getElementById('fileDom');
+    const btnDom = document.getElementById('btn');
+    const msgDom = document.getElementById('msg');
+
+    let cookie, file;
+    cookieDom.addEventListener('change', function(e) {
+      cookie = e.target.value;
+      if (!!cookie) {
+        msgDom.innerText = '';
+      }
+    });
+
+    fileDom.addEventListener('change',async function (e) {
+      file = e.target?.files[0];
+      if (!!file) {
+        msgDom.innerText = '';
+      }
+    });
+
+
+    btnDom.addEventListener('click',async function (e) {
+      if (!cookie) {
+        msgDom.innerText = '请先输入cookie';
+        return;
+      }
+      if (!file) {
+        msgDom.innerText = '请先上传表格';
+        return;
+      }
+      
+      let form = new FormData();
+      form.append('file', file);
+      form.append('cookie', cookie);
+
+      axios({
+        method: 'post',
+        url: '/upload', 
+        data: form,
+      }).then(res => {
+        console.log('axios success', res);
+      }).catch(err => {
+        console.log('axios err', err);
+      });
+    });
+
+  </script>  
+</body>
+</html>
